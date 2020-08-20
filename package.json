@@ -1,0 +1,32 @@
+{
+  "name": "express-4.x-local-example",
+  "version": "0.0.0",
+  "description": "Express 4.x app using Passport for authentication with username and password.",
+  "keywords": [
+    "example",
+    "express",
+    "passport"
+  ],
+  "author": "Jared Hanson",
+  "license": "Unlicense",
+  "homepage": "https://github.com/passport/express-4.x-local-example",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/passport/express-4.x-local-example.git"
+  },
+  "bugs": {
+    "url": "https://github.com/passport/express-4.x-local-example/issues"
+  },
+  "script": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "ejs": "^2.6.2",
+    "express": "^4.17.1",
+    "express-session": "^1.16.1",
+    "morgan": "^1.9.1",
+    "passport": "^0.4.0",
+    "passport-local": "^1.0.0"
+  }
+}
