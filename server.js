@@ -16,12 +16,19 @@ var db = require('./db');
 
 passport.use(new Strategy(
   function(username, password, done) {
-    db.users.findByUsername(username, function(err, user) {
-      if (err) { return done(err); }
-      if (!user) { return done(null, false); }
-      if (user.password != password) { return done(null, false); }
-      return done(null, user);
-    });
+    db.users.findByUsername(username)
+      .then((user) => {
+        if(!user) {
+          return done(null, false);
+        }
+        if(user.password != password) {
+          return done(null, false);
+        }
+        return done(null, user);
+      })
+    .catch(err => {
+      return done(err);
+    })
   }));
 
 
@@ -40,10 +47,13 @@ passport.serializeUser(function(user, done) {
 // Al deserealizar la información del usuario va a quedar almacenada en req.user
 
 passport.deserializeUser(function(id, done) {
-  db.users.findById(id, function (err, user) {
-    if (err) { return done(err); }
-    done(null, user);
-  });
+  db.users.findById(id)
+    .then((user) => {
+      done(null, user);
+    })
+    .catch(err => {
+      return done(err);
+    })
 });
 
 
